@@ -18,7 +18,7 @@ class StarterKitServiceProvider extends ServiceProvider
                 commands: [
                     CreateAllFilters::class,
                     FilterCommand::class,
-                    MakeApi::class.
+                    MakeApi::class,
                     MakeDto::class,
                     MakeService::class
                 ],
