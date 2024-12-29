@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use {{ namespacedModel }};
-use {{ rootNamespace }}Http\Controllers\Controller;
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Controllers\Controller;
 use {{ namespacedRequests }}
 use App\Services\{{ model }}Service;
 use App\DTO\{{ model }}Dto;
