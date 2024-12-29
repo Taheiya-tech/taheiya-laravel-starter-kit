@@ -15,7 +15,7 @@ use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Middleware\TokenMiddleware;
 
 class StarterKitServiceProvider extends ServiceProvider
 {
-    public function boot(Router $router): void
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands(
@@ -33,8 +33,7 @@ class StarterKitServiceProvider extends ServiceProvider
             });
         }
 
-        $router->middlewareGroup('api', [
-            TokenMiddleware::class,
-        ]);
+        $router = $this->app['router'];
+        $router->pushMiddlewareToGroup('api', TokenMiddleware::class);
     }
 }
