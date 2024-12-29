@@ -27,7 +27,7 @@ class StubPublishStubsCommand extends Command
             (new Filesystem())->makeDirectory($stubsPath);
         }
 
-        $files = collect(File::files('/../../../stubs'))
+        $files = collect(File::files(__DIR__ . '/../../../stubs'))
             ->unless($this->option('force'), fn ($files) => $this->unpublished($files));
 
         $published = $this->publish($files);
