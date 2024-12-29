@@ -2,7 +2,9 @@
 
 namespace App\DTO;
 
-class {{ MODEL_NAME }}Dto extends DTO
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\DTO as TaheiyaDto;
+
+class {{ MODEL_NAME }}Dto extends TaheiyaDto
 {
 
 }
