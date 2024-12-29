@@ -2,9 +2,10 @@
 
 namespace {{ namespace }};
 
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Resources\JsonResourceCollection as TaheiyaCollection;
 use Illuminate\Http\Request;
 
-class {{ class }} extends JsonResourceCollection
+class {{ class }} extends TaheiyaCollection
 {
 
 }
