@@ -2,6 +2,7 @@
 
 namespace TaheiyaTech\TaheiyaLaravelStarterKit\Providers;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +16,7 @@ use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Middleware\TokenMiddleware;
 
 class StarterKitServiceProvider extends ServiceProvider
 {
-    public function boot(): void
+    public function boot(Kernel $kernel): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands(
@@ -32,8 +33,7 @@ class StarterKitServiceProvider extends ServiceProvider
                 Artisan::call('stub:publish --force');
             });
         }
+        $kernel->pushMiddleware(TokenMiddleware::class);
 
-        $router = $this->app['router'];
-        $router->pushMiddlewareToGroup('api', TokenMiddleware::class);
     }
 }
