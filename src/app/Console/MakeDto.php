@@ -64,7 +64,7 @@ class MakeDto extends Command
      */
     public function getStubPath()
     {
-        return __DIR__ . '/../../stubs/dto.stub';
+        return __DIR__ . '/../../../stubs/dto.stub';
     }
 
     /**
