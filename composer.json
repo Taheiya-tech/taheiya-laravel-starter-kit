@@ -16,5 +16,12 @@
     ],
     "require": {
         "laravel/framework": "^11"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TaheiyaTech\\TaheiyaLaravelStarterKit\\Providers\\StarterKitServiceProvider"
+            ]
+        }
     }
 }
