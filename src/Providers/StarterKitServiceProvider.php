@@ -2,6 +2,7 @@
 
 namespace TaheiyaTech\TaheiyaLaravelStarterKit\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\CreateAllFilters;
@@ -10,10 +11,11 @@ use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeApi;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeDto;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeService;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\StubPublishStubsCommand;
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Middleware\TokenMiddleware;
 
 class StarterKitServiceProvider extends ServiceProvider
 {
-    public function boot(): void
+    public function boot(Router $router): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands(
@@ -30,5 +32,9 @@ class StarterKitServiceProvider extends ServiceProvider
                Artisan::call('stub:publish --force');
             });
         }
+
+        $router->middlewareGroup('api', [
+            TokenMiddleware::class,
+        ]);
     }
 }
