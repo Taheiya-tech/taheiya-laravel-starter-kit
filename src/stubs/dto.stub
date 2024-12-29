@@ -1,0 +1,8 @@
+<?php
+
+namespace App\DTO;
+
+class {{ MODEL_NAME }}Dto extends DTO
+{
+
+}

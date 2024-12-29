@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Services;
+
+use App\DTO\{{ MODEL_NAME }}Dto;
+use App\Http\Resources\V1\{{ MODEL_NAME }}Resource;
+use App\Http\Resources\V1\{{ MODEL_NAME }}Collection;
+use App\Models\{{ MODEL_NAME }};
+use Illuminate\Http\Request;
+class {{ MODEL_NAME }}Service
+{
+    /**
+     * @param Request $request
+     * @return {{ MODEL_NAME }}Collection
+     */
+    public function getAll(Request $request): {{ MODEL_NAME }}Collection
+    {
+        return new {{ MODEL_NAME }}Collection({{ MODEL_NAME }}::paginate($request->integer('perPage', 10))
+                );
+    }
+
+    /**
+     * @param {{ MODEL_NAME }}Dto ${{ VARIABLE }}Dto
+     * @return {{ MODEL_NAME }}Resource
+     */
+    public function add({{ MODEL_NAME }}Dto ${{ VARIABLE }}Dto): {{ MODEL_NAME }}Resource
+    {
+        return new {{ MODEL_NAME }}Resource({{ MODEL_NAME }}::create(${{ VARIABLE }}Dto->toArray())
+        );
+    }
+
+    /**
+     * @param {{ MODEL_NAME }} ${{ VARIABLE }}
+     * @return {{ MODEL_NAME }}Resource
+     */
+    public function show({{ MODEL_NAME }} ${{ VARIABLE }}): {{ MODEL_NAME }}Resource
+    {
+        return new {{ MODEL_NAME }}Resource(${{ VARIABLE }});
+    }
+
+
+    /**
+     * @param {{ MODEL_NAME }} ${{ VARIABLE }}
+     * @param {{ MODEL_NAME }}Dto ${{ VARIABLE }}Dto
+     * @return {{ MODEL_NAME }}Resource
+     */
+    public function update({{ MODEL_NAME }} ${{ VARIABLE }}, {{ MODEL_NAME }}Dto ${{ VARIABLE }}Dto): {{ MODEL_NAME }}Resource
+    {
+        return new {{ MODEL_NAME }}Resource(tap(${{ VARIABLE }})
+            ->update(${{ VARIABLE }}Dto->toArray())
+        );
+    }
+
+    /**
+     * @param {{ MODEL_NAME }} ${{ VARIABLE }}
+     * @return bool
+     */
+    public function delete({{ MODEL_NAME }} ${{ VARIABLE }}): bool
+    {
+        try{
+            ${{ VARIABLE }}->delete();
+            return true;
+        } catch (\Exception) {
+            return false;
+        }
+    }
+}

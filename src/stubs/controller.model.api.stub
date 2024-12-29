@@ -1,0 +1,62 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedRequests }}
+use App\Services\{{ model }}Service;
+use App\DTO\{{ model }}Dto;
+use App\Http\Requests\V1\{{ model }}\Update{{ model }}Request;
+use App\Http\Requests\V1\{{ model }}\Store{{ model }}Request;
+use Illuminate\Http\JsonResponse;
+
+class {{ class }} extends Controller
+{
+    public function __construct(public {{ model }}Service $service) {}
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): JsonResponse
+    {
+        return $this->ok($this->service->getAll(request: request()));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Store{{ model }}Request $request): JsonResponse
+    {
+        return $this->created(
+            $this->service->add(new {{ model }}Dto($request))
+        );
+    }
+
+    /**
+     * Display the specified {{ model }}.
+     */
+    public function show({{ model }} ${{ modelVariable }}): JsonResponse
+    {
+        return $this->ok($this->service->show(${{ modelVariable }}));
+    }
+
+    /**
+     * Update the specified {{ model }} in storage.
+     */
+    public function update(Update{{ model }}Request $request, {{ model }} ${{ modelVariable }}): JsonResponse
+    {
+        ${{ modelVariable }} = $this->service
+                ->update(${{ modelVariable }}, new {{ model }}Dto($request)
+        );
+        return $this->ok(data: ${{ modelVariable }}, message: '{{ model }} has been updated.');
+    }
+
+    /**
+     * Remove the specified {{ model }} from storage.
+     */
+    public function destroy({{ model }} ${{ modelVariable }}): JsonResponse
+    {
+        $this->service->delete(${{ modelVariable }});
+        return $this->ok(message: '{{ model }} has been deleted.');
+    }
+}

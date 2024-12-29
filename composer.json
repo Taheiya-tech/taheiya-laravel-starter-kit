@@ -1,0 +1,20 @@
+{
+    "name": "taheiya-tech/taheiya-laravel-starter-kit",
+    "description": "laravel Api Starter Kit Containes generate api command and generate filter",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "TaheiyaTech\\TaheiyaLaravelStarterKit\\App\\": "src/app/",
+            "TaheiyaTech\\TaheiyaLaravelStarterKit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Albraa Hesham",
+            "email": "albraa@taheiya.sa"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^11"
+    }
+}
