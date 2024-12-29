@@ -11,7 +11,7 @@ use App\Http\Requests\V1\{{ model }}\Update{{ model }}Request;
 use App\Http\Requests\V1\{{ model }}\Store{{ model }}Request;
 use Illuminate\Http\JsonResponse;
 
-class {{ class }} extends TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Controllers\Controller
+class {{ class }} extends Controller
 {
     public function __construct(public {{ model }}Service $service) {}
     /**
