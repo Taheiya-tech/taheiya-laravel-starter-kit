@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use {{ namespacedModel }};
-use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Controllers\Controller;
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Controllers\Controller as TaheiyaController;
 use {{ namespacedRequests }}
 use App\Services\{{ model }}Service;
 use App\DTO\{{ model }}Dto;
@@ -11,7 +11,7 @@ use App\Http\Requests\V1\{{ model }}\Update{{ model }}Request;
 use App\Http\Requests\V1\{{ model }}\Store{{ model }}Request;
 use Illuminate\Http\JsonResponse;
 
-class {{ class }} extends Controller
+class {{ class }} extends TaheiyaController
 {
     public function __construct(public {{ model }}Service $service) {}
     /**
