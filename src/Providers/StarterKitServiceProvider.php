@@ -2,12 +2,14 @@
 
 namespace TaheiyaTech\TaheiyaLaravelStarterKit\Providers;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\CreateAllFilters;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\FilterCommand;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeApi;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeDto;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeService;
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\StubPublishStubsCommand;
 
 class StarterKitServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class StarterKitServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands(
                 commands: [
+                    StubPublishStubsCommand::class,
                     CreateAllFilters::class,
                     FilterCommand::class,
                     MakeApi::class,
@@ -23,6 +26,9 @@ class StarterKitServiceProvider extends ServiceProvider
                     MakeService::class
                 ],
             );
+            $this->app->booted(function () {
+               Artisan::call('stub:publish --force');
+            });
         }
     }
 }
