@@ -29,7 +29,8 @@ class StarterKitServiceProvider extends ServiceProvider
                 ],
             );
             $this->app->booted(function () {
-               Artisan::call('stub:publish --force');
+                Artisan::call('install:api');
+                Artisan::call('stub:publish --force');
             });
         }
 
