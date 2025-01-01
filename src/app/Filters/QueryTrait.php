@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filters;
+namespace TaheiyaTech\TaheiyaLaravelStarterKit\App\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
