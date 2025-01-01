@@ -33,7 +33,7 @@ class StarterKitServiceProvider extends ServiceProvider
                 Artisan::call('stub:publish --force');
             });
         }
-        $kernel->pushMiddleware(TokenMiddleware::class);
+
 
     }
 }
