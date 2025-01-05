@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+    nginx:
+        build:
+            context: containers
+            dockerfile: nginx.Dockerfile
+        ports:
+            - "8004:80"
+
+        volumes:
+            -   ./:/var/www/html
+        networks:
+            - laravel
+        extra_hosts:
+            - "host.docker.internal:172.17.0.1"
+        depends_on:
+            -   php
+
+    php:
+        build:
+            args:
+                user: albraa # your username on your machine, you can get it by running echo $USER
+                uid: 1000
+            context: containers
+            dockerfile: php.dockerFile
+        volumes:
+            -   ./:/var/www/html
+        networks:
+            - laravel
+        extra_hosts:
+            - "host.docker.internal:172.17.0.1"
+
+networks:
+    laravel:
+        driver: bridge

@@ -33,7 +33,11 @@ class StarterKitServiceProvider extends ServiceProvider
                 Artisan::call('stub:publish --force');
             });
         }
-
+        $this->publishes([
+            __DIR__. '/docker-compose.yaml' => base_path('docker-compose.yaml'),
+            __DIR__. '/nginx' => base_path('nginx'),
+            __DIR__. '/containers' => base_path('containers'),
+        ]);
 
     }
 }
