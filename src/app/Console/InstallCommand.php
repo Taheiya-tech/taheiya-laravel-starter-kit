@@ -29,8 +29,8 @@ class InstallCommand extends Command
         //
         $this->callSilent('vendor:publish', ['--tag' => 'taheiya-laravel-starter-kit']);
         $this->info('taheiya-laravel-starter-kit was installed successfully.');
-        exec('npm install');
-        exec('npx husky init');
+//        exec('npm install');
+//        exec('npx husky init');
 
     }
 }
