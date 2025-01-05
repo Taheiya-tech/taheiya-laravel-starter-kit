@@ -33,7 +33,7 @@ class StarterKitServiceProvider extends ServiceProvider
             );
             $this->app->booted(function () {
                 Artisan::call('stub:publish --force');
-//                Artisan::call('start-kit:install');
+                Artisan::call('install:starter-kit');
             });
         }
         $this->publishes([
