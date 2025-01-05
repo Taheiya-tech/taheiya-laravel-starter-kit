@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prepare": ".husky/pre-commit.sh"
+  },
+  "devDependencies": {
+    "axios": "^1.7.4",
+    "husky": "^9.1.6",
+    "laravel-echo": "^1.17.0",
+    "laravel-vite-plugin": "^1.0",
+    "pusher-js": "^8.4.0-rc2",
+    "vite": "^5.0"
+  }
+}

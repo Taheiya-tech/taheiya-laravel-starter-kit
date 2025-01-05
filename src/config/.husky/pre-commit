@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+echo "Start pinting"
+pint
+
+echo "Start phpstan"
+./vendor/bin/phpstan
+
+#echo "start testing"
+#php artisan test
