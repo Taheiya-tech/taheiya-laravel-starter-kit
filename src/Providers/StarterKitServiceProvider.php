@@ -3,6 +3,7 @@
 namespace TaheiyaTech\TaheiyaLaravelStarterKit\Providers;
 
 use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Database\Console\Migrations\InstallCommand;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
@@ -26,15 +27,17 @@ class StarterKitServiceProvider extends ServiceProvider
                     FilterCommand::class,
                     MakeApi::class,
                     MakeDto::class,
-                    MakeService::class
+                    MakeService::class,
+                    InstallCommand::class
                 ],
             );
             $this->app->booted(function () {
                 Artisan::call('stub:publish --force');
+                Artisan::call('start-kit:install');
             });
         }
         $this->publishes([
-            __DIR__. '/../docker-compose.yml' => base_path('docker-compose.yaml'),
+            __DIR__. '/../docker-compose.yml' => base_path('docker-compose.yml'),
             __DIR__. '/../nginx' => base_path('nginx'),
             __DIR__. '/../containers' => base_path('containers'),
         ], 'taheiya-laravel-starter-kit');
