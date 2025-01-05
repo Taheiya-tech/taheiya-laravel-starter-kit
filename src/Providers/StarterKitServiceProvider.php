@@ -3,12 +3,13 @@
 namespace TaheiyaTech\TaheiyaLaravelStarterKit\Providers;
 
 use Illuminate\Contracts\Http\Kernel;
-use Illuminate\Database\Console\Migrations\InstallCommand;
+
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\CreateAllFilters;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\FilterCommand;
+use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\InstallCommand;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeApi;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeDto;
 use TaheiyaTech\TaheiyaLaravelStarterKit\App\Console\MakeService;
