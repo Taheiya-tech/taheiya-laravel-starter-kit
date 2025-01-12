@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "laravel/framework": "^11"
+        "laravel/framework": "^11",
+        "predis/predis": "^2.3"
     },
     "extra": {
         "laravel": {
