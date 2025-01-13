@@ -44,9 +44,7 @@ class {{ MODEL_NAME }}Service
      */
     public function update({{ MODEL_NAME }} ${{ VARIABLE }}, {{ MODEL_NAME }}Dto ${{ VARIABLE }}Dto): {{ MODEL_NAME }}Resource
     {
-        return new {{ MODEL_NAME }}Resource(tap(${{ VARIABLE }})
-            ->update(${{ VARIABLE }}Dto->toArray())
-        );
+        return new {{ MODEL_NAME }}Resource(tap(${{ VARIABLE }})->update(${{ VARIABLE }}Dto->toArray()));
     }
 
     /**

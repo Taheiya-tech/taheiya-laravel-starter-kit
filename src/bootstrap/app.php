@@ -10,6 +10,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Log;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -25,31 +26,30 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (ValidationException $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = $e->getMessage();
                 $errors = $e->errors();
                 $data = [];
 
                 return app(BaseController::class)->badRequest(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
         $exceptions->render(function (ModelNotFoundException $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = $e->getMessage();
                 $errors = [];
                 $data = [];
 
                 return app(BaseController::class)->badRequest(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
         $exceptions->render(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = 'Resource not found';
                 $errors = [];
                 $data = [];
@@ -57,13 +57,13 @@ return Application::configure(basePath: dirname(__DIR__))
                 Log::error($message);
 
                 return app(BaseController::class)->badRequest(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
         $exceptions->render(function (AuthorizationException|AccessDeniedHttpException $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = 'User is not authorized';
                 $errors = [];
                 $data = [];
@@ -71,13 +71,13 @@ return Application::configure(basePath: dirname(__DIR__))
                 Log::error($message);
 
                 return app(BaseController::class)->forbidden(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
         $exceptions->render(function (AuthenticationException $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = 'User is not authenticated';
                 $errors = [];
                 $data = [];
@@ -85,13 +85,13 @@ return Application::configure(basePath: dirname(__DIR__))
                 Log::error($message);
 
                 return app(BaseController::class)->unauthorized(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
         $exceptions->render(function (Error $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = 'Server error Found Try Again Later';
                 $errors = [];
                 $data = [];
@@ -101,13 +101,13 @@ return Application::configure(basePath: dirname(__DIR__))
                 }
 
                 return app(BaseController::class)->internalServerError(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
         $exceptions->render(function (Exception $e, $request) {
             if ($request->is('api/*')) {
-
                 $message = 'Server error Found Try Again Later';
                 $errors = [];
                 $data = [];
@@ -117,8 +117,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 }
 
                 return app(BaseController::class)->internalServerError(data: $data, message: $message, errors: $errors);
-
             }
+
+            return false;
         });
 
     })->create();
