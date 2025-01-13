@@ -15,8 +15,7 @@ class {{ MODEL_NAME }}Service
      */
     public function getAll(Request $request): {{ MODEL_NAME }}Collection
     {
-        return new {{ MODEL_NAME }}Collection({{ MODEL_NAME }}::paginate($request->integer('perPage', 10))
-                );
+        return new {{ MODEL_NAME }}Collection({{ MODEL_NAME }}::paginate($request->integer('perPage', 10)));
     }
 
     /**
@@ -25,8 +24,7 @@ class {{ MODEL_NAME }}Service
      */
     public function add({{ MODEL_NAME }}Dto ${{ VARIABLE }}Dto): {{ MODEL_NAME }}Resource
     {
-        return new {{ MODEL_NAME }}Resource({{ MODEL_NAME }}::create(${{ VARIABLE }}Dto->toArray())
-        );
+        return new {{ MODEL_NAME }}Resource({{ MODEL_NAME }}::create(${{ VARIABLE }}Dto->toArray()));
     }
 
     /**
