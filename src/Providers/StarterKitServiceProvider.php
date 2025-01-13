@@ -33,21 +33,17 @@ class StarterKitServiceProvider extends ServiceProvider
                 ],
             );
             $this->app->booted(function () {
-                Artisan::call('stub:publish --force');
                 Artisan::call('install:starter-kit');
             });
         }
         $this->publishes([
             __DIR__. '/../docker-compose.yml' => base_path('docker-compose.yml'),
             __DIR__. '/../config/phpstan.neon' => base_path('phpstan.neon'),
-            __DIR__. '/../nginx' => base_path('nginx'),
-            __DIR__. '/../containers/nginx.Dockerfile' => base_path('nginx.Dockerfile'),
             __DIR__. '/../containers/php.Dockerfile' => base_path('php.Dockerfile'),
             __DIR__. '/../.dockerignore' => base_path('.dockerignore'),
             __DIR__. '/../config/.husky' => base_path('.husky'),
             __DIR__. '/../config/package.json' => base_path('package.json'),
             __DIR__. '/../bootstrap/app.php' => base_path('bootstrap/app.php'),
-//            __DIR__. '/../bootstrap/providers.php' => base_path('bootstrap/providers.php'),
         ], 'taheiya-laravel-starter-kit');
 
     }
