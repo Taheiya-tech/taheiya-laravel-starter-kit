@@ -34,7 +34,7 @@ RUN composer install
 RUN chmod -R 775 /var/www/html/storage
 
 #RUN php artisan serve
-RUN php artisan migrate --seed
+RUN php artisan migrate || echo "pass";
 RUN php artisan storage:link
 RUN composer dump-autoload
 #RUN php artisan key:generate
