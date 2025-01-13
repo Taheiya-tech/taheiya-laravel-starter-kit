@@ -3,7 +3,7 @@ version: "3.8"
 services:
     nginx:
         build:
-            context: containers
+            context: .
             dockerfile: nginx.Dockerfile
         ports:
             - "8004:80"
@@ -20,10 +20,10 @@ services:
     php:
         build:
             args:
-                user: albraa # your username on your machine, you can get it by running echo $USER
+                user: root # your username on your machine, you can get it by running echo $USER
                 uid: 1000
-            context: containers
-            dockerfile: php.dockerFile
+            context: .
+            dockerfile: php.DockerFile
         volumes:
             -   ./:/var/www/html
         networks:
