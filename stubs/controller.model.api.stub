@@ -27,9 +27,7 @@ class {{ class }} extends TaheiyaController
      */
     public function store(Store{{ model }}Request $request): JsonResponse
     {
-        return $this->created(
-            $this->service->add(new {{ model }}Dto($request))
-        );
+        return $this->created($this->service->add(new {{ model }}Dto($request)));
     }
 
     /**
@@ -45,9 +43,8 @@ class {{ class }} extends TaheiyaController
      */
     public function update(Update{{ model }}Request $request, {{ model }} ${{ modelVariable }}): JsonResponse
     {
-        ${{ modelVariable }} = $this->service
-                ->update(${{ modelVariable }}, new {{ model }}Dto($request)
-        );
+        ${{ modelVariable }} = $this->service->update(${{ modelVariable }}, new {{ model }}Dto($request));
+
         return $this->ok(data: ${{ modelVariable }}, message: '{{ model }} has been updated.');
     }
 
@@ -57,6 +54,7 @@ class {{ class }} extends TaheiyaController
     public function destroy({{ model }} ${{ modelVariable }}): JsonResponse
     {
         $this->service->delete(${{ modelVariable }});
+
         return $this->ok(message: '{{ model }} has been deleted.');
     }
 }
