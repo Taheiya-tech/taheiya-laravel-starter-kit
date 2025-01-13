@@ -1,22 +1,6 @@
 version: "3.8"
 
 services:
-    nginx:
-        build:
-            context: .
-            dockerfile: nginx.Dockerfile
-        ports:
-            - "8004:80"
-
-        volumes:
-            -   ./:/var/www/html
-        networks:
-            - laravel
-        extra_hosts:
-            - "host.docker.internal:172.17.0.1"
-        depends_on:
-            -   php
-
     php:
         build:
             args:
@@ -24,6 +8,8 @@ services:
                 uid: 1000
             context: .
             dockerfile: php.Dockerfile
+        ports:
+            -   "8000:8000"
         volumes:
             -   ./:/var/www/html
         networks:
