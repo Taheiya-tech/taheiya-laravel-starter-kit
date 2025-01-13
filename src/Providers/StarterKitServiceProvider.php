@@ -43,6 +43,7 @@ class StarterKitServiceProvider extends ServiceProvider
             __DIR__. '/../nginx' => base_path('nginx'),
             __DIR__. '/../nginx.Dockerfile' => base_path('containers/nginx.Dockerfile'),
             __DIR__. '/../php.Dockerfile' => base_path('containers/php.Dockerfile'),
+            __DIR__. '/../.dockerignore' => base_path('.dockerignore'),
             __DIR__. '/../config/.husky' => base_path('.husky'),
             __DIR__. '/../config/package.json' => base_path('package.json'),
         ], 'taheiya-laravel-starter-kit');

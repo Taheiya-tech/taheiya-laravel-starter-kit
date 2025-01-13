@@ -1,0 +1,8 @@
+.gitignore
+.idea
+.husky
+docker-compose.yml
+nginx.Dockerfile
+php.dockerFile
+containers
+vendor
