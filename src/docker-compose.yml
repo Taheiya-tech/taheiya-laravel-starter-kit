@@ -23,7 +23,7 @@ services:
                 user: root # your username on your machine, you can get it by running echo $USER
                 uid: 1000
             context: .
-            dockerfile: php.DockerFile
+            dockerfile: php.Dockerfile
         volumes:
             -   ./:/var/www/html
         networks:
