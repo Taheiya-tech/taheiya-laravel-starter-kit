@@ -41,7 +41,8 @@ class StarterKitServiceProvider extends ServiceProvider
             __DIR__. '/../docker-compose.yml' => base_path('docker-compose.yml'),
             __DIR__. '/../config/phpstan.neon' => base_path('phpstan.neon'),
             __DIR__. '/../nginx' => base_path('nginx'),
-            __DIR__. '/../containers' => base_path('containers'),
+            __DIR__. '/../nginx.Dockerfile' => base_path('containers/nginx.Dockerfile'),
+            __DIR__. '/../php.Dockerfile' => base_path('containers/php.Dockerfile'),
             __DIR__. '/../config/.husky' => base_path('.husky'),
             __DIR__. '/../config/package.json' => base_path('package.json'),
         ], 'taheiya-laravel-starter-kit');
