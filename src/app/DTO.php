@@ -31,7 +31,9 @@ class DTO
          * @phpstan-ignore-next-line
          */
         foreach ($this as $key => $value) {
-            $data[Str::snake($key)] = $value;
+            if($value) {
+                $data[Str::snake($key)] = $value;
+            }
         }
 
         return $data;
