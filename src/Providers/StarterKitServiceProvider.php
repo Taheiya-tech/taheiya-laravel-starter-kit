@@ -40,6 +40,7 @@ class StarterKitServiceProvider extends ServiceProvider
             __DIR__. '/../docker-compose.yml' => base_path('docker-compose.yml'),
             __DIR__. '/../config/phpstan.neon' => base_path('phpstan.neon'),
             __DIR__. '/../containers/php.Dockerfile' => base_path('php.Dockerfile'),
+            __DIR__. '/../containers/entrypoint.sh' => base_path('entrypoint.sh'),
             __DIR__. '/../.dockerignore' => base_path('.dockerignore'),
             __DIR__. '/../config/.husky' => base_path('.husky'),
             __DIR__. '/../config/package.json' => base_path('package.json'),

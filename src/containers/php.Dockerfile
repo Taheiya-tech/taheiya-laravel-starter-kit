@@ -31,12 +31,13 @@ RUN composer install
 #COPY --chmod=07777  /var/www/html/storage -R
 RUN chmod -R 775 /var/www/html/storage
 
-#RUN php artisan serve
-RUN php artisan migrate || echo "pass";
-RUN php artisan storage:link
-RUN composer dump-autoload
-RUN php artisan key:generate
+COPY ./entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+RUN php artisan config:clear
+ENTRYPOINT ["/app/entrypoint.sh"]
+
 EXPOSE 8000
-ENTRYPOINT php artisan serve --host=0.0.0.0
-#CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
+
+#ENTRYPOINT php artisan serve --host=0.0.0.0
+CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
 
