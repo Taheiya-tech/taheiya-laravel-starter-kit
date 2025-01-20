@@ -17,3 +17,7 @@
     * 2- Middleware For retrieve and verify that the request is valid get the token and convert it to api key for usage `` TaheiyaTech\TaheiyaLaravelStarterKit\App\Http\Middleware\TokenMiddleware::class ``
 * #### 3- stubs:-
   * adding the stubs for the new command and the changing in the old command 
+* #### 4- enum convertor:-
+  * adding the enum convertor which convert the enum to json 
+  ##### Configuration:-
+    * EnumToJson::formatEnumCases(Enum::cases())
