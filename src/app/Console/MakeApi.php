@@ -27,7 +27,7 @@ class MakeApi extends Command
     public function handle(): void
     {
         //
-        Artisan::call('make:model', ['model' => $this->argument('model'), '-mfs' => true]);
+        Artisan::call('make:model', ['model' => $this->argument('model'), 'migration' => true, 'factory' => true, 'seed' => true]);
         Artisan::call('make:controller', ['--model' => $this->argument('model'), '--api' => true, 'name' => 'API/V1/'.$this->argument('model').'Controller']);
         Artisan::call('make:service', ['model' => $this->argument('model')]);
         Artisan::call('make:dto', ['model' => $this->argument('model')]);
